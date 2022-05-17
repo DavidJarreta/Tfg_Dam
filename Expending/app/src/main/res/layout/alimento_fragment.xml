@@ -21,13 +21,13 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:text="Añadir alimento"
+            android:text="@string/tv_añadir_alimento"
             android:textAlignment="center"
             android:textColor="@color/teal_200"
             android:textSize="24sp" />
 
         <EditText
-            android:id="@+id/et_desc_incidencia"
+            android:id="@+id/et_nombre_alimento"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginLeft="10dp"
@@ -37,14 +37,14 @@
             android:layout_weight="1"
             android:backgroundTint="@color/design_default_color_secondary"
             android:ems="10"
-            android:hint="Nombre"
+            android:hint="@string/editText_nombre"
             android:inputType="textPersonName"
             android:minHeight="48dp"
             android:textColor="@color/design_default_color_secondary_variant"
             android:textColorHint="@color/design_default_color_secondary_variant" />
 
         <EditText
-            android:id="@+id/et_fecha_incidencia"
+            android:id="@+id/et_precio_alimento"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginLeft="10dp"
@@ -52,7 +52,7 @@
             android:layout_weight="1"
             android:backgroundTint="@color/design_default_color_secondary"
             android:ems="10"
-            android:hint="Precio"
+            android:hint="@string/editText_precio"
             android:inputType="textShortMessage|number"
             android:minHeight="48dp"
             android:textColor="@color/design_default_color_secondary_variant"
@@ -60,7 +60,7 @@
 
 
         <Button
-            android:id="@+id/btn_add_incidencia"
+            android:id="@+id/btn_add_alimento"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginStart="32dp"
@@ -68,9 +68,9 @@
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="15dp"
             android:layout_weight="1"
-            android:text="añadir"
-            app:cornerRadius="16dp"
-            android:backgroundTint="@color/teal_200"/>
+            android:backgroundTint="@color/teal_200"
+            android:text="@string/btn_añadir"
+            app:cornerRadius="16dp" />
 
     </LinearLayout>
 

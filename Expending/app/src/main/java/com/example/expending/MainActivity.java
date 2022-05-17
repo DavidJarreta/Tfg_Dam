@@ -1,6 +1,8 @@
 package com.example.expending;
 
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -16,6 +18,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.expending.Fragments.AlimentoFragment;
 import com.example.expending.Fragments.CrearAlbaranFragment;
+import com.example.expending.Fragments.DialogPersonalizado;
 import com.example.expending.Fragments.IncidenciaFragment;
 import com.example.expending.Fragments.UbicacionMaquinasFragment;
 import com.example.expending.Login.LoginActivity;
@@ -24,7 +27,10 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.example.expending.Fragments.MainFragment;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
+import java.util.Locale;
+
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
+        DialogPersonalizado.Idioma
 {
     DrawerLayout drawerLayout; //todo lo que hay en el main.xml
     Toolbar toolbar;
@@ -34,6 +40,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     //varaibles para cargar el fragmento
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
+
+    //parametros para cambiar de idioma
+    final int SPANISH = 1;
+    final int ENGLISH = 2;
+    int idiomaSeccionado = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,8 +73,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.container, new MainFragment());
         fragmentTransaction.commit();
-
-
     }
 
     @Override
@@ -103,7 +112,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(i);
                 break;
             case R.id.configuracion:
-                Toast.makeText(this, "configuracion", Toast.LENGTH_SHORT).show();
+                FragmentManager fm = getSupportFragmentManager();
+                DialogPersonalizado dp = new DialogPersonalizado();
+                dp.show(fm, "tag");
                 break;
 
             //TODO LO QUE PUEDE HACER UN TRABAJADOR
@@ -132,5 +143,47 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
         return false;
+    }
+
+    @Override
+    public void IdiomaSeleccionado(int idioma) {
+        this.idiomaSeccionado = idioma;
+        //Toast.makeText(this, idiomaSeccionado + "", Toast.LENGTH_SHORT).show();
+        String language = "";
+        switch (idioma) {
+            case SPANISH:
+                language = "es";
+                break;
+            case ENGLISH:
+                language = "en";
+                break;
+        }
+        Locale locale = new Locale(language);
+        Locale.setDefault(locale);
+        Resources resources = this.getResources();
+        Configuration c = resources.getConfiguration();
+        c.locale = locale;
+        resources.updateConfiguration(c, resources.getDisplayMetrics());
+
+        //VOLVERMOS A HACER LO QUE HAY EN EL ONCREATE PARA ACTUALIZAR TODA LA MAINACTIVITY
+        setContentView(R.layout.main_activity);
+
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        drawerLayout = findViewById(R.id.drawer);
+        navigationView = findViewById(R.id.navegationView);
+        navigationView.setNavigationItemSelectedListener(this);
+        actionBarDrawerToggle = new ActionBarDrawerToggle(this,
+                drawerLayout, toolbar, R.string.open , R.string.close);
+
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.setDrawerIndicatorEnabled(true); //true para que se vea el icon del drawer
+        actionBarDrawerToggle.syncState();
+
+        fragmentManager = getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.container, new MainFragment());
+        fragmentTransaction.commit();
     }
 }

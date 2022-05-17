@@ -1,9 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Expending</string>
     <string name="open">open</string>
     <string name="close">close</string>
 
-    <string-array name="users">
+    <string name="editText_email">Email</string>
+    <string name="editText_contraseña">Contraseña</string>
+    <string name="editText_login_entrar">Iniciar sesión</string>
+    <string name="editText_login_registrarse">Regístrate</string>
+
+    <string name="editText_resgistrarse_nombre">Nombre</string>
+    <string name="editText_confirmar_contraseña">Confirmar contraseña</string>
+    <string name="btn_confirmar">Confirmar</string>
+    <string name="btn_volver">Volver</string>
+
+
+    <string name="menu_admin">Administrador</string>
+    <string name="menu_trabajador">Trabajador</string>
+    <string name="menu_otros">Otros</string>
+    <string name="menu_crear_albaran">Crear albarán</string>
+    <string name="menu_lista_albaranes">Albaranes</string>
+    <string name="menu_alimentos">Alimentos</string>
+    <string name="menu_incidencias">Incidencias</string>
+    <string name="menu_ubicaciones">Ubicaciones</string>
+    <string name="menu_configuracion">Configuración</string>
+    <string name="menu_cerrar_sesion">Cerrar sesión</string>
+
+    <string name="tv_añadir_alimento">Añadir alimento</string>
+    <string name="editText_nombre">Nombre</string>
+    <string name="editText_precio">Precio</string>
+    <string name="btn_añadir">Añadir</string>
+
+    <string name="tv_añadir_albaran">Añadir albaran</string>
+    <string name="contador">Contador</string>
+    <string name="dinero">Dinero</string>
+    <string name="fecha_albaran">Fecha albarán</string>
+    <string name="estado_maquina">Estado máquina</string>
+    <string name="cantidad_alimento">Cantidad alimento</string>
+
+    <string name="tv_añadir_incidencia">Añadir incidencia</string>
+    <string name="descripcion_incidencia">Descripción</string>
+    <string name="fecha">Fecha</string>
+
+
+
+
+
+    <string-array name="usuarios">
         <item>Administrador</item>
         <item>Empleado</item>
     </string-array>
@@ -14,7 +57,7 @@
         <item>Leve</item>
     </string-array>
 
-    <string-array name="usuarios">
+    <string-array name="usuario">
         <item>David</item>
     </string-array>
 

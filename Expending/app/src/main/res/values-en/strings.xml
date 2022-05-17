@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Expending</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
+
+    <string name="editText_email">Email</string>
+    <string name="editText_contraseña">Password</string>
+    <string name="editText_login_entrar">Login</string>
+    <string name="editText_login_registrarse">Register</string>
+
+    <string name="editText_resgistrarse_nombre">Name</string>
+    <string name="editText_confirmar_contraseña">Confirm password</string>
+    <string name="btn_confirmar">Confirm</string>
+    <string name="btn_volver">Back</string>
+
+
+    <string name="menu_admin">Administrator</string>
+    <string name="menu_trabajador">Employee</string>
+    <string name="menu_otros">Others</string>
+    <string name="menu_crear_albaran">Create delivery note</string>
+    <string name="menu_lista_albaranes">Delivery note</string>
+    <string name="menu_alimentos">Food</string>
+    <string name="menu_incidencias">Incidents</string>
+    <string name="menu_ubicaciones">Location</string>
+    <string name="menu_configuracion">Settings</string>
+    <string name="menu_cerrar_sesion">Sign off</string>
+
+    <string name="tv_añadir_alimento">Create food</string>
+    <string name="editText_nombre">Name</string>
+    <string name="editText_precio">Price</string>
+    <string name="btn_añadir">Create</string>
+
+    <string name="tv_añadir_albaran">Create delivery note</string>
+    <string name="contador">Counter</string>
+    <string name="dinero">Money</string>
+    <string name="fecha_albaran">Date</string>
+    <string name="estado_maquina">Machine state</string>
+    <string name="cantidad_alimento">Count food</string>
+
+    <string name="tv_añadir_incidencia">Create incident</string>
+    <string name="descripcion_incidencia">Description</string>
+    <string name="fecha">Date</string>
+</resources>

@@ -41,7 +41,7 @@
             android:layout_weight="1"
             android:backgroundTint="@color/design_default_color_secondary"
             android:ems="10"
-            android:hint="Nombre"
+            android:hint="@string/editText_resgistrarse_nombre"
             android:inputType="textPersonName"
             android:minHeight="48dp"
             android:textColor="@color/design_default_color_secondary_variant"
@@ -58,7 +58,7 @@
             android:layout_weight="1"
             android:backgroundTint="@color/design_default_color_secondary"
             android:ems="10"
-            android:hint="Email"
+            android:hint="@string/editText_email"
             android:inputType="textPersonName"
             android:minHeight="48dp"
             android:textColor="@color/design_default_color_secondary_variant"
@@ -74,7 +74,7 @@
             android:layout_marginEnd="32dp"
             android:layout_weight="1"
             android:background="@drawable/spinner_register"
-            android:entries="@array/users"
+            android:entries="@array/usuarios"
             android:minHeight="48dp"
             tools:ignore="MissingConstraints,TouchTargetSizeCheck" />
 
@@ -88,7 +88,7 @@
             android:layout_weight="1"
             android:backgroundTint="@color/design_default_color_secondary"
             android:ems="10"
-            android:hint="Contraseña"
+            android:hint="@string/editText_contraseña"
             android:inputType="textPersonName"
             android:minHeight="48dp"
             android:textColor="@color/design_default_color_secondary_variant"
@@ -105,7 +105,7 @@
             android:layout_weight="1"
             android:backgroundTint="@color/design_default_color_secondary"
             android:ems="10"
-            android:hint="Confirmar contraseña"
+            android:hint="@string/editText_confirmar_contraseña"
             android:inputType="textPersonName"
             android:minHeight="48dp"
             android:textColor="@color/design_default_color_secondary_variant"
@@ -121,7 +121,7 @@
             android:layout_marginEnd="32dp"
             android:layout_weight="1"
             android:background="@drawable/button_rounded"
-            android:text="Confirmar"
+            android:text="@string/btn_confirmar"
             tools:ignore="TouchTargetSizeCheck" />
 
         <Button
@@ -134,7 +134,7 @@
             android:layout_marginBottom="30dp"
             android:layout_weight="1"
             android:background="@drawable/button_rounded"
-            android:text="Volver"
+            android:text="@string/btn_volver"
             tools:ignore="TouchTargetSizeCheck" />
     </LinearLayout>
 

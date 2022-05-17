@@ -1,59 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Administrador">
+    <item android:title="@string/menu_admin"
+        android:id="@+id/menu_titulo1">
         <menu>
             <item android:id="@+id/crear_albaran"
                 android:icon="@drawable/crear_albaran_foreground"
-                android:title="Crear albarán">
+                android:title="@string/menu_crear_albaran">
             </item>
             <item android:id="@+id/albaranes"
                 android:icon="@drawable/albaran_foreground"
-                android:title="Albaranes">
+                android:title="@string/menu_lista_albaranes">
             </item>
             <item android:id="@+id/alimentos"
                 android:icon="@drawable/alimento_foreground"
-                android:title="Alimentos">
+                android:title="@string/menu_alimentos">
             </item>
             <item android:id="@+id/incidencias"
                 android:icon="@drawable/incidencia_foreground"
-                android:title="Incidencias">
+                android:title="@string/menu_incidencias">
             </item>
             <item android:id="@+id/ubicaciones"
                 android:icon="@drawable/localizacion_foreground"
-                android:title="Ubicaciones">
+                android:title="@string/menu_ubicaciones">
             </item>
             <item android:id="@+id/configuracion"
                 android:icon="@drawable/ajustes"
-                android:title="Configuración">
+                android:title="@string/menu_configuracion">
             </item>
         </menu>
     </item>
-    <item android:title="Trabajador">
+    <item android:title="@string/menu_trabajador">
         <menu>
             <item android:id="@+id/crear_albaran_trabajador"
                 android:icon="@drawable/crear_albaran_foreground"
-                android:title="Crear albarán">
+                android:title="@string/menu_crear_albaran">
             </item>
             <item android:id="@+id/albaranes_trabajador"
                 android:icon="@drawable/albaran_foreground"
-                android:title="Albaranes">
+                android:title="@string/menu_lista_albaranes">
             </item>
             <item android:id="@+id/incidencias_trabajador"
                 android:icon="@drawable/incidencia_foreground"
-                android:title="Incidencias">
+                android:title="@string/menu_incidencias">
             </item>
             <item android:id="@+id/ubicaciones_trabajador"
                 android:icon="@drawable/localizacion_foreground"
-                android:title="Ubicaciones">
+                android:title="@string/menu_ubicaciones">
             </item>
         </menu>
     </item>
-    <item android:title="Otros">
+    <item android:title="@string/menu_otros">
         <menu>
             <item android:id="@+id/cerrar_sesion"
                 android:icon="@drawable/cerrar_foreground"
-                android:title="Cerrar sesión">
+                android:title="@string/menu_cerrar_sesion">
             </item>
         </menu>
     </item>
