@@ -42,13 +42,9 @@
     <string name="descripcion_incidencia">Descripción</string>
     <string name="fecha">Fecha</string>
 
-
-
-
-
     <string-array name="usuarios">
-        <item>Administrador</item>
         <item>Empleado</item>
+        <item>Administrador</item>
     </string-array>
 
     <string-array name="incidencias">

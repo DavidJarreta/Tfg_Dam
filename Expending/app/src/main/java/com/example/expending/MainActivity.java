@@ -3,6 +3,7 @@ package com.example.expending;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -46,12 +47,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     final int ENGLISH = 2;
     int idiomaSeccionado = 1;
 
+    AdminSQL conexion;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
-
         toolbar = findViewById(R.id.toolbar);
+
+
+        //iniciamos conexion
+        conexion = new AdminSQL(this, "expending", null, 1);
+
         setSupportActionBar(toolbar); //pone el toolbar en el action bar
 
         drawerLayout = findViewById(R.id.drawer);
