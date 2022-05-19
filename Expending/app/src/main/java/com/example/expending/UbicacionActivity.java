@@ -1,9 +1,13 @@
 package com.example.expending;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -17,12 +21,17 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.io.Console;
+import java.util.ArrayList;
+
 public class UbicacionActivity extends AppCompatActivity implements OnMapReadyCallback
 {
     private GoogleMap mMap;
     Button btn_volver;
     Toolbar toolbar;
-    ActionBarDrawerToggle actionBarDrawerToggle;
+    ArrayList<Maquina> listaMaquinas = new ArrayList<>();
+
+    AdminSQL conexion = new AdminSQL(this, "expending", null, 4);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +48,7 @@ public class UbicacionActivity extends AppCompatActivity implements OnMapReadyCa
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        //guardarDatos();
 
         btn_volver.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,12 +63,52 @@ public class UbicacionActivity extends AppCompatActivity implements OnMapReadyCa
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
         mMap = googleMap;
+        double lati = 0;
+        double longi = 0;
 
-        LatLng sydney = new LatLng(40.42428047564802, -3.7076996553623554);
+        SQLiteDatabase db = conexion.getReadableDatabase();
+        Maquina m = null;
+        Cursor c = db.rawQuery("select * from maquinas;", null);
+        while(c.moveToNext()){
+            m = new Maquina();
+            m.setNombre_empresa(c.getString(1));
+            m.setLatitud(c.getString(2));
+            m.setLongitud(c.getString(3));
+            //listaMaquinas.add(m);
+
+            lati = Double.parseDouble(m.getLatitud());
+            longi = Double.parseDouble(m.getLongitud());
+
+            LatLng ubi = new LatLng(lati, longi);
+            mMap.addMarker(new MarkerOptions()
+                    .position(ubi)
+                    .title(m.getNombre_empresa()));
+            mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ubi,6));
+        }
+
+
+        /*LatLng sydney = new LatLng(40.42428047564802, -3.7076996553623554);
         mMap.addMarker(new MarkerOptions()
                 .position(sydney)
                 .title("Madrid"));
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney,6));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney,6));*/
+    }
+
+    public void guardarDatos(){
+
+        SQLiteDatabase db = conexion.getReadableDatabase();
+        Maquina m = null;
+        Cursor c = db.rawQuery("select * from maquinas;", null);
+
+        while(c.moveToNext()){
+            m = new Maquina();
+            m.setNombre_empresa(c.getString(1));
+            m.setLatitud(c.getString(2));
+            m.setLongitud(c.getString(3));
+            listaMaquinas.add(m);
+        }
+        c.close();
     }
 }

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Expending</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
+
+    <string name="editText_email">Email</string>
+    <string name="editText_contraseña">Mot de passe</string>
+    <string name="editText_login_entrar">Connectez-vous</string>
+    <string name="editText_login_registrarse">Registre</string>
+
+    <string name="editText_resgistrarse_nombre">Nom</string>
+    <string name="editText_confirmar_contraseña">Confirmer le mot de passe</string>
+    <string name="btn_confirmar">Confirmer</string>
+    <string name="btn_volver">Retourner</string>
+
+
+    <string name="menu_admin">Administrateur</string>
+    <string name="menu_trabajador">Travailleur</string>
+    <string name="menu_otros">Autre</string>
+    <string name="menu_crear_albaran">Créer un bon de livraison</string>
+    <string name="menu_lista_albaranes">Bulletin de livraison</string>
+    <string name="menu_alimentos">Alimentation</string>
+    <string name="menu_incidencias">Incidents</string>
+    <string name="menu_ubicaciones">Sites</string>
+    <string name="menu_configuracion">Configuration</string>
+    <string name="menu_cerrar_sesion">Déconnexion</string>
+
+    <string name="tv_añadir_alimento">Ajouter de la nourriture</string>
+    <string name="editText_nombre">Nom</string>
+    <string name="editText_precio">Prix</string>
+    <string name="btn_añadir">Ajouter</string>
+
+    <string name="tv_añadir_albaran">Ajouter de la nourriture</string>
+    <string name="contador">Compteur</string>
+    <string name="dinero">Argent</string>
+    <string name="fecha_albaran">Date de la livraison</string>
+    <string name="estado_maquina">État de la machine</string>
+    <string name="cantidad_alimento">Quantité</string>
+
+    <string name="tv_añadir_incidencia">Ajout dun problème</string>
+    <string name="descripcion_incidencia">Description</string>
+    <string name="fecha">Date</string>
+</resources>

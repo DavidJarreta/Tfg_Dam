@@ -8,7 +8,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Expending">
+        android:theme="@style/Theme.Expending"
+        android:requestLegacyExternalStorage="true">
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyClpopnZKZ19nCb3vHaYNARtN8G_GA39pU">

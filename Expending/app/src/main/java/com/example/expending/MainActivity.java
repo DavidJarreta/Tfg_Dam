@@ -3,10 +3,8 @@ package com.example.expending;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -21,10 +19,6 @@ import com.example.expending.Fragments.AlimentoFragment;
 import com.example.expending.Fragments.CrearAlbaranFragment;
 import com.example.expending.Fragments.DialogPersonalizado;
 import com.example.expending.Fragments.IncidenciaFragment;
-import com.example.expending.Fragments.UbicacionMaquinasFragment;
-import com.example.expending.Login.LoginActivity;
-import com.example.expending.Login.RegisterActivity;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.example.expending.Fragments.MainFragment;
 
@@ -45,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     //parametros para cambiar de idioma
     final int SPANISH = 1;
     final int ENGLISH = 2;
+    final int FRENCH = 3;
+
     int idiomaSeccionado = 1;
 
     AdminSQL conexion;
@@ -57,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         //iniciamos conexion
-        conexion = new AdminSQL(this, "expending", null, 1);
+        conexion = new AdminSQL(this, "expending", null, 4);
 
         setSupportActionBar(toolbar); //pone el toolbar en el action bar
 
@@ -163,6 +159,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case ENGLISH:
                 language = "en";
+                break;
+            case FRENCH:
+                language = "fr";
                 break;
         }
         Locale locale = new Locale(language);

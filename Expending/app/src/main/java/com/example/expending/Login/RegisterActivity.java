@@ -25,7 +25,7 @@ public class RegisterActivity extends AppCompatActivity
     Spinner spinner_rol;
     ProgressDialog progressDialog;
     //conexion
-    AdminSQL conex = new AdminSQL(RegisterActivity.this, "expending", null, 1);
+    AdminSQL conex = new AdminSQL(RegisterActivity.this, "expending", null, 4);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,19 +50,19 @@ public class RegisterActivity extends AppCompatActivity
                 String confirmPass = et_confirm_pass_r.getText().toString();
                 String rol = spinner_rol.getSelectedItem().toString();
 
-                //Progresdialog
-                progressDialog = new ProgressDialog(RegisterActivity.this);
-                progressDialog.setMessage("Creando..."); // Setting Message
-                progressDialog.setTitle("Creando usuario"); // Setting Title
-                progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
-                progressDialog.show(); // Display Progress Dialog
-                progressDialog.setCancelable(false);
-
                 SQLiteDatabase BaseDeDatos = conex.getWritableDatabase();
                 ContentValues registro = new ContentValues();
 
                 if (!nombre.isEmpty() && !email.isEmpty() && !pass.isEmpty() && !confirmPass.isEmpty()){
                     if(pass.equals(confirmPass)){
+                        //Progresdialog
+                        progressDialog = new ProgressDialog(RegisterActivity.this);
+                        progressDialog.setMessage("Creando..."); // Setting Message
+                        progressDialog.setTitle("Creando usuario"); // Setting Title
+                        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
+                        progressDialog.show(); // Display Progress Dialog
+                        progressDialog.setCancelable(false);
+
                         new Thread(new Runnable() {
                             public void run() {
                                 try {

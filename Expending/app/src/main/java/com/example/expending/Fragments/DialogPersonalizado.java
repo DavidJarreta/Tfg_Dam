@@ -19,6 +19,7 @@ public class DialogPersonalizado extends DialogFragment
     Idioma idioma;
     final int SPANISH = 1;
     final int ENGLISH = 2;
+    final int FRENCH = 3;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -30,7 +31,7 @@ public class DialogPersonalizado extends DialogFragment
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
 
-        final String[] items = {"Español", "Inglés"};
+        final String[] items = {"Español", "Inglés", "Francés"};
         AlertDialog.Builder ventana = new AlertDialog.Builder(getActivity());
         ventana.setTitle("Elige el idioma de la aplicación");
         ventana.setIcon(R.mipmap.logo);
@@ -45,6 +46,8 @@ public class DialogPersonalizado extends DialogFragment
                 } else if(items[i] == "Inglés"){
                     idioma.IdiomaSeleccionado(ENGLISH);
                     //Toast.makeText(getActivity(), ENGLISH + "", Toast.LENGTH_SHORT).show();
+                } else if(items[i] == "Francés") {
+                    idioma.IdiomaSeleccionado(FRENCH);
                 }
             }
         });
