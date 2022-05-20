@@ -1,8 +1,6 @@
 package com.example.expending.Fragments;
 
 import android.content.ContentValues;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,8 +17,6 @@ import androidx.fragment.app.Fragment;
 import com.example.expending.AdminSQL;
 import com.example.expending.R;
 
-import java.util.Locale;
-
 public class AlimentoFragment extends Fragment
 {
 
@@ -34,9 +30,9 @@ public class AlimentoFragment extends Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.alimento_fragment, container, false);
 
-        et_nombre = view.findViewById(R.id.et_nombre_alimento);
-        et_precio = view.findViewById(R.id.et_precio_alimento);
-        btn_add = view.findViewById(R.id.btn_add_alimento);
+        et_nombre = view.findViewById(R.id.et_nombre_ali);
+        et_precio = view.findViewById(R.id.et_precio_ali);
+        btn_add = view.findViewById(R.id.btn_add_inci);
 
         conexion = new AdminSQL(getContext(), "expending", null, 4);
 

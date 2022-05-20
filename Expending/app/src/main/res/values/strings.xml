@@ -12,6 +12,7 @@
     <string name="editText_resgistrarse_nombre">Nombre</string>
     <string name="editText_confirmar_contraseña">Confirmar contraseña</string>
     <string name="btn_confirmar">Confirmar</string>
+    <string name="btn_fecha">Fecha</string>
     <string name="btn_volver">Volver</string>
 
 
@@ -33,7 +34,7 @@
 
     <string name="tv_añadir_albaran">Añadir albaran</string>
     <string name="contador">Contador</string>
-    <string name="dinero">Dinero</string>
+    <string name="dinero">Dinero recaudado</string>
     <string name="fecha_albaran">Fecha albarán</string>
     <string name="estado_maquina">Estado máquina</string>
     <string name="cantidad_alimento">Cantidad alimento</string>

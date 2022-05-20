@@ -26,7 +26,7 @@
             android:textSize="24sp" />
 
         <Spinner
-            android:id="@+id/spinner_usuario"
+            android:id="@+id/spinner_usuario_alba"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginLeft="10dp"
@@ -34,14 +34,11 @@
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
             android:layout_weight="1"
-            android:background="@drawable/spinner_register"
-
             android:entries="@array/usuario"
-            android:minHeight="48dp"
-            tools:ignore="MissingConstraints,TouchTargetSizeCheck" />
+            android:background="@drawable/spinner_register"/>
 
         <Spinner
-            android:id="@+id/spinner_incidencia"
+            android:id="@+id/spinner_maquina_alba"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginLeft="10dp"
@@ -50,8 +47,7 @@
             android:layout_marginBottom="10dp"
             android:layout_weight="1"
             android:background="@drawable/spinner_register"
-
-            android:entries="@array/incidencias"
+            android:entries="@array/maquinas"
             android:minHeight="48dp"
             tools:ignore="MissingConstraints,TouchTargetSizeCheck" />
 
@@ -136,8 +132,7 @@
             android:layout_marginBottom="10dp"
             android:layout_weight="1"
             android:background="@drawable/spinner_register"
-
-            android:entries="@array/maquinas"
+            android:entries="@array/alimentos"
             android:minHeight="48dp"
             tools:ignore="MissingConstraints,TouchTargetSizeCheck" />
 
@@ -160,7 +155,7 @@
 
 
         <Button
-            android:id="@+id/btn_add_alimento"
+            android:id="@+id/btn_add_inci"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginStart="32dp"

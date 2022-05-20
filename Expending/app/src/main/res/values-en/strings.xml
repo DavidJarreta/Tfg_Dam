@@ -41,4 +41,5 @@
     <string name="tv_añadir_incidencia">Create incident</string>
     <string name="descripcion_incidencia">Description</string>
     <string name="fecha">Date</string>
+    <string name="btn_fecha">Date incident</string>
 </resources>

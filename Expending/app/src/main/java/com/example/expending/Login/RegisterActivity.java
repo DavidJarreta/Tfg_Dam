@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.expending.AdminSQL;
+import com.example.expending.MainActivity;
 import com.example.expending.R;
 
 import java.nio.charset.StandardCharsets;
@@ -87,6 +89,9 @@ public class RegisterActivity extends AppCompatActivity
                         et_email_r.setText("");
                         et_pass_r.setText("");
                         et_confirm_pass_r.setText("");
+
+                        Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
+                        startActivity(i);
 
                     } else {
                         et_pass_r.setText("");

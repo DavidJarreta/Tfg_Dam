@@ -27,7 +27,7 @@
             android:textSize="24sp" />
 
         <EditText
-            android:id="@+id/et_nombre_alimento"
+            android:id="@+id/et_nombre_ali"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginLeft="10dp"
@@ -44,7 +44,7 @@
             android:textColorHint="@color/design_default_color_secondary_variant" />
 
         <EditText
-            android:id="@+id/et_precio_alimento"
+            android:id="@+id/et_precio_ali"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginLeft="10dp"
@@ -60,7 +60,7 @@
 
 
         <Button
-            android:id="@+id/btn_add_alimento"
+            android:id="@+id/btn_add_inci"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginStart="32dp"

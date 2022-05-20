@@ -5,6 +5,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -22,6 +23,8 @@ import com.example.expending.Fragments.IncidenciaFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.example.expending.Fragments.MainFragment;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
@@ -42,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     final int FRENCH = 3;
 
     int idiomaSeccionado = 1;
+    String fechaCompleta;
 
     AdminSQL conexion;
 

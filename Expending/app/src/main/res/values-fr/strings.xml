@@ -31,7 +31,7 @@
     <string name="editText_precio">Prix</string>
     <string name="btn_añadir">Ajouter</string>
 
-    <string name="tv_añadir_albaran">Ajouter de la nourriture</string>
+    <string name="tv_añadir_albaran">Ajouter un bon de livraison</string>
     <string name="contador">Compteur</string>
     <string name="dinero">Argent</string>
     <string name="fecha_albaran">Date de la livraison</string>
@@ -41,4 +41,5 @@
     <string name="tv_añadir_incidencia">Ajout dun problème</string>
     <string name="descripcion_incidencia">Description</string>
     <string name="fecha">Date</string>
+    <string name="btn_fecha">Date dun problème</string>
 </resources>
