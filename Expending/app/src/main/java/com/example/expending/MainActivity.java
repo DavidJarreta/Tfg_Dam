@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     final int FRENCH = 3;
 
     int idiomaSeccionado = 1;
-    String fechaCompleta;
 
     AdminSQL conexion;
 
@@ -57,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         //iniciamos conexion
-        conexion = new AdminSQL(this, "expending", null, 4);
+        conexion = new AdminSQL(this, "expending", null, 5);
 
         setSupportActionBar(toolbar); //pone el toolbar en el action bar
 

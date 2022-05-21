@@ -31,7 +31,7 @@ public class UbicacionActivity extends AppCompatActivity implements OnMapReadyCa
     Toolbar toolbar;
     ArrayList<Maquina> listaMaquinas = new ArrayList<>();
 
-    AdminSQL conexion = new AdminSQL(this, "expending", null, 4);
+    AdminSQL conexion = new AdminSQL(this, "expending", null, 5);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

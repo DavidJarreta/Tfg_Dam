@@ -1,7 +1,7 @@
 package com.example.expending.Fragments;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -19,19 +19,21 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.expending.AdminSQL;
+import com.example.expending.Maquina;
 import com.example.expending.R;
-import com.example.expending.Usuario;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
+import java.util.Calendar;
 import java.util.List;
 
 public class IncidenciaFragment extends Fragment
 {
 
-    Spinner spinner_usuario, spinner_gravedad;
+    Spinner spinner_maquina, spinner_gravedad;
     EditText et_descrip, et_fecha_inci;
     Button btn_add_inci;
+    long fecha_incidencia;
     AdminSQL conexion;
 
     @Nullable
@@ -39,27 +41,68 @@ public class IncidenciaFragment extends Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.incidencia_fragment, container, false);
 
-        spinner_usuario = view.findViewById(R.id.spinner_usuario_in);
+        spinner_maquina = view.findViewById(R.id.spinner_maquina_in);
         spinner_gravedad = view.findViewById(R.id.spinner_incidencia);
         et_descrip = view.findViewById(R.id.et_descripcion);
         et_fecha_inci = view.findViewById(R.id.et_fecha_inci);
         btn_add_inci = view.findViewById(R.id.btn_add_inci);
 
-        conexion = new AdminSQL(getContext(), "expending", null, 4);
+        String dia = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime());
+        et_fecha_inci.setText(dia);
 
-        List<Usuario> listaUsuarios = llenarSpinnerUsuarios();
-        ArrayAdapter<Usuario> arrayAdapter = new ArrayAdapter<>(getContext(),
-                androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, listaUsuarios);
+        conexion = new AdminSQL(getContext(), "expending", null, 5);
 
-        spinner_usuario.setAdapter(arrayAdapter);
+        List<Maquina> listaMaquinas = llenarSpinnerMaquinas();
+        ArrayAdapter<Maquina> arrayAdapter = new ArrayAdapter<>(getContext(),
+                androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, listaMaquinas);
 
+        spinner_maquina.setAdapter(arrayAdapter);
+
+        btn_add_inci.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String maquina = spinner_maquina.getSelectedItem().toString();
+                String gravedad = spinner_gravedad.getSelectedItem().toString();
+                String descrip = et_descrip.getText().toString();
+                String fecha = et_fecha_inci.getText().toString();
+
+                String[] parts = maquina.split(",");
+                String id = parts[0];
+                Integer idMaquina = Integer.valueOf(id);
+
+                SQLiteDatabase BaseDeDatos = conexion.getWritableDatabase();
+                ContentValues registro = new ContentValues();
+
+                if (!descrip.isEmpty() && !fecha.isEmpty()){
+                    if (fecha.contains("/")){
+                        registro.put("fecha_incidencia", fecha);
+                        registro.put("descripcion", descrip);
+                        registro.put("gravedad", gravedad);
+                        registro.put("id_maquina", idMaquina);
+
+                        BaseDeDatos.insert("incidencias", "id", registro);
+                        //BaseDeDatos.close();
+
+                        et_descrip.setText("");
+                        et_fecha_inci.setText("");
+                        Toast.makeText(getContext(), "Incidencia creada", Toast.LENGTH_SHORT).show();
+
+                    } else {
+                        et_fecha_inci.setText("");
+                        Toast.makeText(getContext(), "Escribe bien la fecha", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(getContext(), "Rellena los campos", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
         return view;
     }
 
-    public Cursor mostrarUsuarios(){
+    public Cursor mostrarMaquinas(){
         try{
             SQLiteDatabase bd = conexion.getWritableDatabase();
-            Cursor filas = bd.rawQuery("select * from usuarios", null);
+            Cursor filas = bd.rawQuery("select * from maquinas", null);
             if (filas.moveToFirst()){
                 return filas;
             } else {
@@ -71,20 +114,20 @@ public class IncidenciaFragment extends Fragment
     }
 
     @SuppressLint("Range")
-    private List<Usuario> llenarSpinnerUsuarios(){
-        List<Usuario> listaUsers = new ArrayList<>();
-        Cursor c = mostrarUsuarios();
+    private List<Maquina> llenarSpinnerMaquinas(){
+        List<Maquina> listaMaquina = new ArrayList<>();
+        Cursor c = mostrarMaquinas();
 
         if(c != null){
             if(c.moveToFirst()){
                 do {
-                    Usuario u = new Usuario();
-                    //u.setId(c.getInt(c.getColumnIndex("id")));
-                    u.setNombre(c.getString(c.getColumnIndex("nombre")));
-                    listaUsers.add(u);
+                    Maquina m = new Maquina();
+                    m.setId(c.getInt(c.getColumnIndex("id_maquina")));
+                    m.setNombre_empresa(c.getString(c.getColumnIndex("nombre_empresa")));
+                    listaMaquina.add(m);
                 } while (c.moveToNext());
             }
         }
-        return listaUsers;
+        return listaMaquina;
     }
 }

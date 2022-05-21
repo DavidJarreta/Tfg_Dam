@@ -49,4 +49,9 @@ public class Maquina implements Serializable
     public void setLongitud(String longitud) {
         this.longitud = longitud;
     }
+
+    @Override
+    public String toString() {
+        return id + ", " + nombre_empresa;
+    }
 }

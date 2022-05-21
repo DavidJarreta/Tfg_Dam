@@ -24,7 +24,7 @@ public class AdminSQL extends SQLiteOpenHelper
                 "precio double)");
 
         sql.execSQL("create table albaranes(id_albaran integer primary key autoincrement, estado_albaran text not null," +
-                "fecha long, dinero_recaudado double, contador integer, id_usuario integer, id_maquina integer," +
+                "fecha text, dinero_recaudado double, contador integer,  id_usuario integer,id_maquina integer," +
                 "foreign key(id_usuario) references usuarios(id_usuario)" +
                 "on delete cascade on update cascade," +
                 "foreign key(id_maquina) references maquinas(id_maquina)" +
@@ -37,7 +37,7 @@ public class AdminSQL extends SQLiteOpenHelper
                 "foreign key(id_alimento) references alimentos(id_alimento)" +
                 "on delete cascade on update cascade)");
 
-        sql.execSQL("create table incidencias(id_incidencia integer primary key autoincrement, fecha_incidencia long," +
+        sql.execSQL("create table incidencias(id_incidencia integer primary key autoincrement, fecha_incidencia text," +
                 "descripcion text not null, gravedad text not null, id_maquina integer," +
                 "foreign key(id_maquina) references maquinas(id_maquina)" +
                 "on delete cascade on update cascade)");

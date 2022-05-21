@@ -27,7 +27,7 @@ public class RegisterActivity extends AppCompatActivity
     Spinner spinner_rol;
     ProgressDialog progressDialog;
     //conexion
-    AdminSQL conex = new AdminSQL(RegisterActivity.this, "expending", null, 4);
+    AdminSQL conex = new AdminSQL(RegisterActivity.this, "expending", null, 5);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,8 +90,7 @@ public class RegisterActivity extends AppCompatActivity
                         et_pass_r.setText("");
                         et_confirm_pass_r.setText("");
 
-                        Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
-                        startActivity(i);
+                        Toast.makeText(RegisterActivity.this, "Usuario creado", Toast.LENGTH_SHORT).show();
 
                     } else {
                         et_pass_r.setText("");

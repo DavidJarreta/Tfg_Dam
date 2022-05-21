@@ -34,7 +34,7 @@ public class AlimentoFragment extends Fragment
         et_precio = view.findViewById(R.id.et_precio_ali);
         btn_add = view.findViewById(R.id.btn_add_inci);
 
-        conexion = new AdminSQL(getContext(), "expending", null, 4);
+        conexion = new AdminSQL(getContext(), "expending", null, 5);
 
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
