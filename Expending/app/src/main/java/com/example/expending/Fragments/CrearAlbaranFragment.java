@@ -104,6 +104,7 @@ public class CrearAlbaranFragment extends Fragment
                 Integer cantidad =  Integer.valueOf(et_cantidad.getText().toString());
 
                 SQLiteDatabase BaseDeDatos = conexion.getWritableDatabase();
+                SQLiteDatabase BDD = conexion.getReadableDatabase();
                 ContentValues registro = new ContentValues();
 
                 if (!contador.isEmpty() && dinero != 0 && !fecha.isEmpty() && !estado.isEmpty() && cantidad != 0){
@@ -125,24 +126,27 @@ public class CrearAlbaranFragment extends Fragment
                         et_contador.setText("");
                         et_cantidad.setText("");
 
-
                         //ALMACENAMOS EL ID DEL ALBARÁN CREADO PARA HACER LA INSERCIÓN EN LA TABLA ALBARAN_ALIMENTO
-                        SQLiteDatabase BDD = conexion.getReadableDatabase();
                         Cursor fila = BDD.rawQuery("select id_albaran from albaranes where estado_albaran= '" + estado + "';", null);
                         int id_albaran = 0;
                         if (fila.moveToFirst()){
                             id_albaran = fila.getInt(0);
                         }
-
-                        SQLiteDatabase BaseDeDatos2 = conexion.getWritableDatabase();
                         ContentValues registro2 = new ContentValues();
                         registro2.put("id_albaran", id_albaran);
                         registro2.put("id_alimento", idAlimento);
                         registro2.put("cantidad", cantidad);
+                        BaseDeDatos.insert("albaran_alimento", "id_albaran_alimento", registro2);
 
-                        BaseDeDatos2.insert("albaran_alimento", "id_albaran_alimento", registro2);
+                        //INSERCIÓN EN EXISTENCIA MAQUINA
+                        ContentValues registro3 = new ContentValues();
+                        registro3.put("cantidad", cantidad);
+                        registro3.put("id_maquina", idMaquina);
+                        registro3.put("id_alimento", idAlimento);
+                        BaseDeDatos.insert("existencia_maquina", "id_existencia", registro3);
 
                         Toast.makeText(getContext(), "Albarán creado", Toast.LENGTH_SHORT).show();
+
                     } else {
                         Toast.makeText(getContext(), "Fecha incorrecta", Toast.LENGTH_SHORT).show();
                     }
