@@ -30,26 +30,6 @@
             </item>
         </menu>
     </item>
-    <item android:title="@string/menu_trabajador">
-        <menu>
-            <item android:id="@+id/crear_albaran_trabajador"
-                android:icon="@drawable/crear_albaran_foreground"
-                android:title="@string/menu_crear_albaran">
-            </item>
-            <item android:id="@+id/albaranes_trabajador"
-                android:icon="@drawable/albaran_foreground"
-                android:title="@string/menu_lista_albaranes">
-            </item>
-            <item android:id="@+id/incidencias_trabajador"
-                android:icon="@drawable/incidencia_foreground"
-                android:title="@string/menu_incidencias">
-            </item>
-            <item android:id="@+id/ubicaciones_trabajador"
-                android:icon="@drawable/localizacion_foreground"
-                android:title="@string/menu_ubicaciones">
-            </item>
-        </menu>
-    </item>
     <item android:title="@string/menu_otros">
         <menu>
             <item android:id="@+id/cerrar_sesion"

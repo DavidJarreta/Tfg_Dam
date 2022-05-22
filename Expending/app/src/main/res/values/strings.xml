@@ -16,7 +16,7 @@
     <string name="btn_volver">Volver</string>
 
 
-    <string name="menu_admin">Administrador</string>
+    <string name="menu_admin">Opciones</string>
     <string name="menu_trabajador">Trabajador</string>
     <string name="menu_otros">Otros</string>
     <string name="menu_crear_albaran">Crear albarán</string>

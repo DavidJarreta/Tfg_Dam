@@ -65,7 +65,6 @@ public class AdminSQL extends SQLiteOpenHelper
                 "'Ayuntamiento Mallen', '41.899971', '-1.420459')");
         sql.execSQL("insert into maquinas(nombre_empresa, latitud, longitud) values (" +
                 "'Casa de cultura', '42.466570', '-2.445540')");
-
         sql.execSQL("insert into maquinas(nombre_empresa, latitud, longitud) values (" +
                 "'Academia Calatayud', '41.352900', '-1.630606')");
         sql.execSQL("insert into maquinas(nombre_empresa, latitud, longitud) values (" +
@@ -82,7 +81,6 @@ public class AdminSQL extends SQLiteOpenHelper
                 "'Rufles', '1.2')");
         sql.execSQL("insert into alimentos(nombre, precio) values (" +
                 "'Palmera chocolate', '1.6')");
-
         sql.execSQL("insert into alimentos(nombre, precio) values (" +
                 "'Fanta naranja', '0.6')");
         sql.execSQL("insert into alimentos(nombre, precio) values (" +

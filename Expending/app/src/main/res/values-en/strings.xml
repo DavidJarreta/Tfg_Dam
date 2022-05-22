@@ -15,7 +15,7 @@
     <string name="btn_volver">Back</string>
 
 
-    <string name="menu_admin">Administrator</string>
+    <string name="menu_admin">Options</string>
     <string name="menu_trabajador">Employee</string>
     <string name="menu_otros">Others</string>
     <string name="menu_crear_albaran">Create delivery note</string>

@@ -15,7 +15,7 @@
     <string name="btn_volver">Retourner</string>
 
 
-    <string name="menu_admin">Administrateur</string>
+    <string name="menu_admin">Choix</string>
     <string name="menu_trabajador">Travailleur</string>
     <string name="menu_otros">Autre</string>
     <string name="menu_crear_albaran">Créer un bon de livraison</string>

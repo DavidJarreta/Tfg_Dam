@@ -88,7 +88,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //cuando guarde el rol se hará un if con las dos opciones y con restricciones en las opciones del menu
 
         switch (item.getItemId()){
-            //TODO LO QUE PUEDE HACER UN ADMINISTRADOR
             case R.id.crear_albaran:
                 fragmentManager = getSupportFragmentManager();
                 fragmentTransaction = fragmentManager.beginTransaction();
@@ -122,32 +121,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 DialogPersonalizado dp = new DialogPersonalizado();
                 dp.show(fm, "tag");
                 break;
-
-            //TODO LO QUE PUEDE HACER UN TRABAJADOR
-            case R.id.crear_albaran_trabajador:
-                fragmentManager = getSupportFragmentManager();
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.container, new CrearAlbaranFragment());
-                fragmentTransaction.commit();
-                break;
-            case R.id.albaranes_trabajador:
-                fragmentManager = getSupportFragmentManager();
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.container, new MainFragment());
-                fragmentTransaction.commit();
-                break;
-            case R.id.incidencias_trabajador:
-                fragmentManager = getSupportFragmentManager();
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.container, new IncidenciaFragment());
-                fragmentTransaction.commit();
-                break;
-            case R.id.ubicaciones_trabajador:
-                i = new Intent(MainActivity.this, UbicacionActivity.class);
-                startActivity(i);
-                break;
         }
-
         return false;
     }
 
