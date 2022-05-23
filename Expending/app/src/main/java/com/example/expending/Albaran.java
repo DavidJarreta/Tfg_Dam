@@ -5,13 +5,14 @@ import java.io.Serializable;
 public class Albaran implements Serializable
 {
     private int id, id_usuario, id_maquina, contador;
-    private String estado_albaran, fecha;
+    private String estado_albaran, fecha, nombre_empresa, nombre_usuario;
     private double dinero;
 
     public Albaran() {
     }
 
-    public Albaran(int id, int id_usuario, int id_maquina, int contador, String estado_albaran, String fecha, double dinero) {
+    public Albaran(int id, int id_usuario, int id_maquina, int contador, String estado_albaran,
+                   String fecha, String nombre_empresa, String nombre_usuario, double dinero) {
         this.id = id;
         this.id_usuario = id_usuario;
         this.id_maquina = id_maquina;
@@ -19,6 +20,24 @@ public class Albaran implements Serializable
         this.estado_albaran = estado_albaran;
         this.fecha = fecha;
         this.dinero = dinero;
+        this.nombre_empresa = nombre_empresa;
+        this.nombre_usuario = nombre_usuario;
+    }
+
+    public String getNombre_empresa() {
+        return nombre_empresa;
+    }
+
+    public void setNombre_empresa(String nombre_empresa) {
+        this.nombre_empresa = nombre_empresa;
+    }
+
+    public String getNombre_usuario() {
+        return nombre_usuario;
+    }
+
+    public void setNombre_usuario(String nombre_usuario) {
+        this.nombre_usuario = nombre_usuario;
     }
 
     public int getId() {
