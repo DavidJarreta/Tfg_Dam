@@ -31,6 +31,7 @@
     <string name="editText_precio">Prix</string>
     <string name="btn_añadir">Ajouter</string>
 
+    <string name="editAlbaran">Modifier le bon de livraison</string>
     <string name="tv_añadir_albaran">Ajouter un bon de livraison</string>
     <string name="contador">Compteur</string>
     <string name="dinero">Argent</string>

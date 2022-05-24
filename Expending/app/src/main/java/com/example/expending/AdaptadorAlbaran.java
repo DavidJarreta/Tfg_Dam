@@ -2,10 +2,14 @@ package com.example.expending;
 
 import android.content.Context;
 import android.provider.AlarmClock;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,19 +20,20 @@ import java.util.Locale;
 import java.util.stream.Collectors;
 
 public class AdaptadorAlbaran extends RecyclerView.Adapter<AdaptadorAlbaran.MiContenedor>
+
 {
 
     ArrayList<Albaran> listaAlbaranes;
     ArrayList<Albaran> listaOriginal;
     Context contexto;
-    //OnDatosListener onDatosListener;
+    OnDatosListener onDatosListener;
 
-    public AdaptadorAlbaran(ArrayList<Albaran> listaAlbaranes, Context contexto) {
+    public AdaptadorAlbaran(ArrayList<Albaran> listaAlbaranes, Context contexto, OnDatosListener onDatosListener) {
         this.listaAlbaranes = listaAlbaranes;
         this.contexto = contexto;
         listaOriginal = new ArrayList<>();
         listaOriginal.addAll(listaAlbaranes);
-        //this.onDatosListener = onDatosListener;
+        this.onDatosListener = onDatosListener;
     }
 
     @Override
@@ -47,6 +52,8 @@ public class AdaptadorAlbaran extends RecyclerView.Adapter<AdaptadorAlbaran.MiCo
         holder.tv_id_usuario.setText("Id usuario: " + listaAlbaranes.get(position).getId_usuario());
         holder.tv_id_maquina.setText("Id máquina: " + listaAlbaranes.get(position).getId_maquina());
         holder.tv_fecha.setText("Fecha: " + listaAlbaranes.get(position).getFecha());
+        holder.tv_usuario.setText("Usuario: " + listaAlbaranes.get(position).getNombre_usuario());
+        holder.tv_nombre_empresa.setText("Empresa: " + listaAlbaranes.get(position).getNombre_empresa());
     }
 
     @Override
@@ -80,9 +87,11 @@ public class AdaptadorAlbaran extends RecyclerView.Adapter<AdaptadorAlbaran.MiCo
         notifyDataSetChanged(); //REFRESCAMOS
     }
 
-    public class MiContenedor extends RecyclerView.ViewHolder {
+    public class MiContenedor extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener,
+            MenuItem.OnMenuItemClickListener{
 
         TextView tv_id_albaran, tv_estado_albaran, tv_contador, tv_fecha, tv_dinero, tv_id_usuario, tv_id_maquina;
+        TextView tv_nombre_empresa, tv_usuario;
 
         public MiContenedor(@NonNull View itemView) {
             super(itemView);
@@ -93,7 +102,31 @@ public class AdaptadorAlbaran extends RecyclerView.Adapter<AdaptadorAlbaran.MiCo
             tv_dinero = itemView.findViewById(R.id.i_dinero);
             tv_id_usuario = itemView.findViewById(R.id.i_id_usuario);
             tv_id_maquina = itemView.findViewById(R.id.i_id_maquina);
-            //itemView.setOnCreateContextMenuListener(this);
+            tv_usuario = itemView.findViewById(R.id.i_nombre_usuario);
+            tv_nombre_empresa = itemView.findViewById(R.id.i_empresa);
+            itemView.setOnCreateContextMenuListener(this);
         }
+
+        //metodo que crea las opciones del context menu
+        @Override
+        public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo)
+        {
+            //MenuItem itemEditar = contextMenu.add(Menu.NONE, 1, 1, "Editar");
+            MenuItem itemBorrar = contextMenu.add(Menu.NONE, 2, 2, "Borrar");
+            //itemEditar.setOnMenuItemClickListener(this);
+            itemBorrar.setOnMenuItemClickListener(this);
+        }
+
+        @Override
+        public boolean onMenuItemClick(MenuItem menuItem) {
+            //Toast.makeText(contexto, "Borrado", Toast.LENGTH_SHORT).show();
+            onDatosListener.onDatosBorrar(getAdapterPosition()); //le pasamos a la interfaz la posicion
+            return true;
+        }
+    }
+
+    public interface OnDatosListener
+    {
+        void onDatosBorrar(int posicion);
     }
 }

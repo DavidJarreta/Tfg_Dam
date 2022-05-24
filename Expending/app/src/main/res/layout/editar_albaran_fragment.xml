@@ -10,22 +10,23 @@
         android:layout_height="match_parent"
         android:layout_marginTop="96dp"
         android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="20dp">
+
 
         <TextView
-            android:id="@+id/tv_crear_albaran"
+            android:id="@+id/tv_edit_albaran"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="10dp"
             android:layout_weight="0.75"
-            android:text="@string/tv_añadir_albaran"
+            android:text="@string/editAlbaran"
             android:textAlignment="center"
-            android:textColor="@color/teal_200"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/teal_200"/>
 
         <Spinner
-            android:id="@+id/spinner_usuario_alba"
+            android:id="@+id/spinner_edit_usuario"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginLeft="10dp"
@@ -33,138 +34,134 @@
             android:layout_marginRight="10dp"
             android:layout_marginBottom="5dp"
             android:layout_weight="1"
-            android:background="@drawable/spinner_register" />
+            android:background="@drawable/spinner_register"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <Spinner
-            android:id="@+id/spinner_maquina_alba"
+            android:id="@+id/spinner_edit_maquina"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_weight="1"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/spinner_register"
-            android:minHeight="48dp"
-            tools:ignore="MissingConstraints,TouchTargetSizeCheck" />
+            android:background="@drawable/spinner_register"/>
 
         <EditText
-            android:id="@+id/et_contador"
+            android:id="@+id/et_edit_contador"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="5dp"
             android:layout_weight="0.80"
-            android:backgroundTint="@color/design_default_color_secondary"
             android:ems="10"
-            android:hint="@string/contador"
             android:inputType="number"
-            android:minHeight="48dp"
-            android:textColor="@color/design_default_color_secondary_variant"
-            android:textColorHint="@color/design_default_color_secondary_variant"
-            tools:ignore="TouchTargetSizeCheck" />
-
-        <EditText
-            android:id="@+id/et_dinero"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:text="@string/contador"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="5dp"
-            android:layout_weight="0.80"
             android:backgroundTint="@color/design_default_color_secondary"
+            android:hint="@string/contador"
+            android:minHeight="48dp"
+            android:textColor="@color/design_default_color_secondary_variant"
+            android:textColorHint="@color/design_default_color_secondary_variant"/>
+
+        <EditText
+            android:id="@+id/et_edit_dinero"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.80"
             android:ems="10"
-            android:hint="@string/dinero"
             android:inputType="none|numberDecimal"
-            android:minHeight="48dp"
-            android:textColor="@color/design_default_color_secondary_variant"
-            android:textColorHint="@color/design_default_color_secondary_variant"
-            tools:ignore="TouchTargetSizeCheck" />
-
-        <EditText
-            android:id="@+id/et_fecha_creacion"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:text="@string/dinero"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="5dp"
-            android:layout_weight="0.80"
             android:backgroundTint="@color/design_default_color_secondary"
+            android:hint="@string/dinero"
+            android:minHeight="48dp"
+            android:textColor="@color/design_default_color_secondary_variant"
+            android:textColorHint="@color/design_default_color_secondary_variant"/>
+
+        <EditText
+            android:id="@+id/et_edit_fecha"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.80"
             android:ems="10"
-            android:hint="@string/fecha_albaran"
             android:inputType="textWebEditText"
-            android:minHeight="48dp"
-            android:textColor="@color/design_default_color_secondary_variant"
-            android:textColorHint="@color/design_default_color_secondary_variant"
-            tools:ignore="TouchTargetSizeCheck" />
-
-        <EditText
-            android:id="@+id/et_estado_maquina"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:text="@string/fecha"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="5dp"
-            android:layout_weight="0.80"
             android:backgroundTint="@color/design_default_color_secondary"
+            android:hint="@string/fecha_albaran"
+            android:minHeight="48dp"
+            android:textColor="@color/design_default_color_secondary_variant"
+            android:textColorHint="@color/design_default_color_secondary_variant"/>
+
+        <EditText
+            android:id="@+id/et_edit_estado"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.80"
             android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/estado_maquina"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
+            android:backgroundTint="@color/design_default_color_secondary"
             android:hint="@string/estado_maquina"
             android:minHeight="48dp"
             android:textColor="@color/design_default_color_secondary_variant"
-            android:textColorHint="@color/design_default_color_secondary_variant"
-            tools:ignore="TouchTargetSizeCheck" />
+            android:textColorHint="@color/design_default_color_secondary_variant"/>
 
         <Spinner
-            android:id="@+id/spinner_alimentos"
+            android:id="@+id/spinner_edit_ali"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_weight="1"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="5dp"
-            android:layout_weight="1"
             android:background="@drawable/spinner_register"
-            android:minHeight="48dp"
-            tools:ignore="MissingConstraints,TouchTargetSizeCheck" />
+            android:minHeight="48dp"/>
 
         <EditText
-            android:id="@+id/et_cantidad_alimento"
+            android:id="@+id/et_edit_cantidad"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_weight="0.80"
+            android:ems="10"
+            android:inputType="number"
+            android:text="@string/cantidad_alimento"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="5dp"
-            android:layout_weight="0.80"
             android:backgroundTint="@color/design_default_color_secondary"
-            android:ems="10"
             android:hint="@string/cantidad_alimento"
-            android:inputType="number"
             android:minHeight="48dp"
             android:textColor="@color/design_default_color_secondary_variant"
-            android:textColorHint="@color/design_default_color_secondary_variant"
-            tools:ignore="TouchTargetSizeCheck" />
+            android:textColorHint="@color/design_default_color_secondary_variant"/>
 
         <Button
-            android:id="@+id/btn_add_alba"
+            android:id="@+id/btn_edit_albaran"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_weight="1"
             android:layout_marginStart="32dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="5dp"
-            android:layout_weight="1"
             android:backgroundTint="@color/teal_200"
             android:text="@string/btn_añadir"
-            app:cornerRadius="16dp"
-            tools:ignore="TouchTargetSizeCheck" />
-
-
+            app:cornerRadius="16dp"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -33,6 +33,7 @@
     <string name="btn_añadir">Añadir</string>
 
     <string name="tv_añadir_albaran">Añadir albaran</string>
+    <string name="editAlbaran">Editar albaran</string>
     <string name="contador">Contador</string>
     <string name="dinero">Dinero recaudado</string>
     <string name="fecha_albaran">Fecha albarán</string>

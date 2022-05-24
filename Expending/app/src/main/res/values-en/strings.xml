@@ -25,6 +25,7 @@
     <string name="menu_ubicaciones">Location</string>
     <string name="menu_configuracion">Settings</string>
     <string name="menu_cerrar_sesion">Sign off</string>
+    <string name="editAlbaran">Edit delivery note</string>
 
     <string name="tv_añadir_alimento">Create food</string>
     <string name="editText_nombre">Name</string>

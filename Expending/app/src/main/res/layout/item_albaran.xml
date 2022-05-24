@@ -11,8 +11,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:background="#4D72E477">
+        android:background="#4D72E477"
+        android:padding="10dp">
+
 
         <TextView
             android:id="@+id/i_id_albaran"
@@ -29,15 +30,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
         <TextView
             android:id="@+id/i_estado"
-            android:layout_width="350dp"
-            android:layout_height="32dp"
+            android:layout_width="199dp"
+            android:layout_height="54dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="150dp"
+            android:layout_marginStart="171dp"
+            android:layout_marginTop="100dp"
             android:text="Estado albarán"
             android:textAlignment="textStart"
             android:textColor="#090909"
@@ -46,12 +46,12 @@
 
         <TextView
             android:id="@+id/i_fecha"
-            android:layout_width="199dp"
-            android:layout_height="35dp"
+            android:layout_width="198dp"
+            android:layout_height="30dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="171dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="56dp"
             android:text="Fecha"
             android:textAlignment="textStart"
             android:textColor="#0C0C0C"
@@ -60,12 +60,12 @@
 
         <TextView
             android:id="@+id/i_dinero"
-            android:layout_width="202dp"
-            android:layout_height="32dp"
+            android:layout_width="197dp"
+            android:layout_height="31dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="171dp"
-            android:layout_marginTop="56dp"
+            android:layout_marginTop="170dp"
             android:text="Dinero"
             android:textAlignment="textStart"
             android:textColor="#0C0C0C"
@@ -74,8 +74,8 @@
 
         <TextView
             android:id="@+id/i_contador"
-            android:layout_width="199dp"
-            android:layout_height="32dp"
+            android:layout_width="198dp"
+            android:layout_height="29dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="171dp"
@@ -88,7 +88,7 @@
 
         <TextView
             android:id="@+id/i_id_usuario"
-            android:layout_width="117dp"
+            android:layout_width="122dp"
             android:layout_height="31dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
@@ -102,8 +102,8 @@
 
         <TextView
             android:id="@+id/i_id_maquina"
-            android:layout_width="121dp"
-            android:layout_height="33dp"
+            android:layout_width="122dp"
+            android:layout_height="31dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="21dp"
@@ -113,6 +113,28 @@
             android:textColor="#020202"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/i_nombre_usuario"
+            android:layout_width="146dp"
+            android:layout_height="32dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="170dp"
+            android:text="Nombre"
+            android:textColor="#050505" />
+
+        <TextView
+            android:id="@+id/i_empresa"
+            android:layout_width="336dp"
+            android:layout_height="38dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="210dp"
+            android:text="Empresa"
+            android:textColor="#050505" />
 
 
     </RelativeLayout>

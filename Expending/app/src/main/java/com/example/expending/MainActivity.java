@@ -19,6 +19,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.expending.Fragments.AlimentoFragment;
 import com.example.expending.Fragments.CrearAlbaranFragment;
 import com.example.expending.Fragments.DialogPersonalizado;
+import com.example.expending.Fragments.EditAlbaranFragment;
 import com.example.expending.Fragments.IncidenciaFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.example.expending.Fragments.MainFragment;

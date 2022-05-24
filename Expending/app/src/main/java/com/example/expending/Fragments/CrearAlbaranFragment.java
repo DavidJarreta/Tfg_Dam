@@ -155,6 +155,7 @@ public class CrearAlbaranFragment extends Fragment
                 }
             }
         });
+
         return view;
     }
 
