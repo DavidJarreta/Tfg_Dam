@@ -48,13 +48,10 @@ public class UbicacionActivity extends AppCompatActivity implements OnMapReadyCa
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        //guardarDatos();
-
         btn_volver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(UbicacionActivity.this, MainActivity.class);
-                startActivity(i);
+                finish();
             }
         });
 

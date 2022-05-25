@@ -106,8 +106,7 @@ public class RegisterActivity extends AppCompatActivity
         btn_volver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(i);
+                finish();
             }
         });
 

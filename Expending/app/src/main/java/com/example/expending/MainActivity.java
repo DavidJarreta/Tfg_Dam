@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     final int FRENCH = 3;
 
     int idiomaSeccionado = 1;
-
+    String tipo_usuario = null;
     AdminSQL conexion;
 
     @Override
@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
         toolbar = findViewById(R.id.toolbar);
-
 
         //iniciamos conexion
         conexion = new AdminSQL(this, "expending", null, 5);
@@ -75,54 +74,98 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         actionBarDrawerToggle.setDrawerIndicatorEnabled(true); //true para que se vea el icon del drawer
         actionBarDrawerToggle.syncState();
 
+        Intent i = this.getIntent();
+        Bundle b = i.getExtras();
+        if(b != null) {
+            String tipo = b.getString("TIPO");
+            this.tipo_usuario = tipo;
+        }
         //cargar fragmento albaranes
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.container, new MainFragment());
+        fragmentTransaction.add(R.id.container, new CrearAlbaranFragment());
         fragmentTransaction.commit();
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         drawerLayout.closeDrawer(GravityCompat.START);
-        //habrá que coger el usuario que ha iniciado sesion para comprabar si es admin o trabajador
-        //cuando guarde el rol se hará un if con las dos opciones y con restricciones en las opciones del menu
-
-        switch (item.getItemId()){
-            case R.id.crear_albaran:
-                fragmentManager = getSupportFragmentManager();
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.container, new CrearAlbaranFragment());
-                fragmentTransaction.commit();
-                break;
-            case R.id.albaranes:
-                fragmentManager = getSupportFragmentManager();
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.container, new MainFragment());
-                fragmentTransaction.commit();
-                break;
-            case R.id.alimentos:
-                fragmentManager = getSupportFragmentManager();
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.container, new AlimentoFragment());
-                fragmentTransaction.commit();
-                break;
-            case R.id.incidencias:
-                fragmentManager = getSupportFragmentManager();
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.container, new IncidenciaFragment());
-                fragmentTransaction.commit();
-                break;
-            case R.id.ubicaciones:
-                Intent i = new Intent(MainActivity.this, UbicacionActivity.class);
-                startActivity(i);
-                break;
-            case R.id.configuracion:
-                FragmentManager fm = getSupportFragmentManager();
-                DialogPersonalizado dp = new DialogPersonalizado();
-                dp.show(fm, "tag");
-                break;
-        }
+            if (this.tipo_usuario.equals("Empleado")){
+                //EMPLEADO
+                switch (item.getItemId()) {
+                    case R.id.crear_albaran:
+                        fragmentManager = getSupportFragmentManager();
+                        fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.container, new CrearAlbaranFragment());
+                        fragmentTransaction.commit();
+                        break;
+                    case R.id.incidencias:
+                        fragmentManager = getSupportFragmentManager();
+                        fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.container, new IncidenciaFragment());
+                        fragmentTransaction.commit();
+                        break;
+                    case R.id.ubicaciones:
+                        Intent i = new Intent(MainActivity.this, UbicacionActivity.class);
+                        startActivity(i);
+                        break;
+                    case R.id.configuracion:
+                        FragmentManager fm = getSupportFragmentManager();
+                        DialogPersonalizado dp = new DialogPersonalizado();
+                        dp.show(fm, "tag");
+                        break;
+                    case R.id.albaranes:
+                        Toast.makeText(this, "No tienes permisos", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.alimentos:
+                        Toast.makeText(this, "No tienes permisos", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.cerrar_sesion:
+                        finish();
+                        Toast.makeText(this, "Sesión cerrada", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            } else if (this.tipo_usuario.equals("Administrador")){
+                switch (item.getItemId()){
+                    case R.id.albaranes:
+                        fragmentManager = getSupportFragmentManager();
+                        fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.container, new MainFragment());
+                        fragmentTransaction.commit();
+                        break;
+                    case R.id.alimentos:
+                        fragmentManager = getSupportFragmentManager();
+                        fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.container, new AlimentoFragment());
+                        fragmentTransaction.commit();
+                        break;
+                    case R.id.crear_albaran:
+                        fragmentManager = getSupportFragmentManager();
+                        fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.container, new CrearAlbaranFragment());
+                        fragmentTransaction.commit();
+                        break;
+                    case R.id.incidencias:
+                        fragmentManager = getSupportFragmentManager();
+                        fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.container, new IncidenciaFragment());
+                        fragmentTransaction.commit();
+                        break;
+                    case R.id.ubicaciones:
+                        Intent i = new Intent(MainActivity.this, UbicacionActivity.class);
+                        startActivity(i);
+                        break;
+                    case R.id.configuracion:
+                        FragmentManager fm = getSupportFragmentManager();
+                        DialogPersonalizado dp = new DialogPersonalizado();
+                        dp.show(fm, "tag");
+                        break;
+                    case R.id.cerrar_sesion:
+                        finish();
+                        Toast.makeText(this, "Sesión cerrada", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
         return false;
     }
 
@@ -167,7 +210,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.container, new MainFragment());
+        fragmentTransaction.add(R.id.container, new CrearAlbaranFragment());
         fragmentTransaction.commit();
     }
 }
