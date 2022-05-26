@@ -1,6 +1,7 @@
 package com.example.expending.Fragments;
 
 import android.annotation.SuppressLint;
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,6 +36,7 @@ public class EditAlbaranFragment extends Fragment
     EditText et_contador_edit, et_dinero_edit, et_fecha_edit, et_estado_edit, et_cantidad_edit;
     Button btn_edit;
     AdminSQL conexion;
+    int idAlbaran = 0;
 
     @Nullable
     @Override
@@ -72,14 +75,75 @@ public class EditAlbaranFragment extends Fragment
         spinner_alimento_edit.setAdapter(arrayAdapterAlimentos);
 
         //crear objeto bundle para recibir el objeto enviado por argumentos
-        Bundle objetoAlbaran = getArguments();
+        Bundle objetoPersona = getArguments();
         Albaran albaran = null;
 
-        //validacion para verificar si existen argumentos enviados para mostrarlos
-        if(objetoAlbaran != null){
-            albaran = (Albaran) objetoAlbaran.getSerializable("objeto");
 
+        //validacion para verificar si existen argumentos enviados para mostrarlos
+        if(objetoPersona != null){
+            albaran = (Albaran) objetoPersona.getSerializable("objeto");
+            idAlbaran = albaran.getId();
+
+            spinner_usuario_edit.setTag(albaran.getId_usuario() + ", " + albaran.getNombre_usuario());
+            spinner_maquina_edit.setTag(albaran.getId_maquina()+ ", " + albaran.getNombre_empresa());
+            //spinner_alimento_edit.setTag()
+
+            et_contador_edit.setText(albaran.getContador() + "");
+            et_dinero_edit.setText(albaran.getDinero() + "");
+            et_fecha_edit.setText(albaran.getFecha());
+            et_estado_edit.setText(albaran.getEstado_albaran());
+            //et_cantidad_edit.setText(albaran.getC);
         }
+
+        btn_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String usuario_e = spinner_usuario_edit.getSelectedItem().toString();
+                String maquina_e = spinner_maquina_edit.getSelectedItem().toString();
+                String alimento_e = spinner_alimento_edit.getSelectedItem().toString();
+
+                //parseamos el id del usuario a integer
+                String[] partsUsuario = usuario_e.split(",");
+                String idU = partsUsuario[0];
+                Integer idUsuario = Integer.valueOf(idU);
+
+                //parseamos el id de la maquina a integer
+                String[] partsMaquina = maquina_e.split(",");
+                String idM = partsMaquina[0];
+                Integer idMaquina = Integer.valueOf(idM);
+
+                //parseamos el id del alimento a integer
+                /*String[] partsAlimento = alimento_e.split(",");
+                String idA = partsAlimento[0];
+                Integer idAlimento = Integer.valueOf(idA);*/
+
+
+                String contador_e = et_contador_edit.getText().toString();
+                double dinero_e = Double.parseDouble(et_dinero_edit.getText().toString());
+                String fecha_e = et_fecha_edit.getText().toString();
+                String estado_e = et_estado_edit.getText().toString();
+                Integer cantidad_e =  Integer.valueOf(et_cantidad_edit.getText().toString());
+
+                SQLiteDatabase BaseDeDatos = conexion.getWritableDatabase();
+                ContentValues registro = new ContentValues();
+
+                if (!contador_e.isEmpty() && dinero_e != 0 && !fecha_e.isEmpty() && !estado_e.isEmpty() && cantidad_e != 0){
+                    if(fecha_e.contains("/")){
+                        registro.put("estado_albaran", estado_e);
+                        registro.put("fecha", fecha_e);
+                        registro.put("dinero_recaudado", dinero_e);
+                        registro.put("contador", contador_e);
+                        registro.put("id_usuario", idUsuario);
+                        registro.put("id_maquina", idMaquina);
+
+                        BaseDeDatos.update("albaranes", registro, "id_albaran="+idAlbaran,null);
+                        //BaseDeDatos.close();
+                        getActivity().onBackPressed();
+                    }
+                }
+            }
+        });
+
 
         return  view;
     }

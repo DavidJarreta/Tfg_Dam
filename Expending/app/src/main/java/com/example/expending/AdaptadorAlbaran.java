@@ -20,13 +20,16 @@ import java.util.Locale;
 import java.util.stream.Collectors;
 
 public class AdaptadorAlbaran extends RecyclerView.Adapter<AdaptadorAlbaran.MiContenedor>
-
+        implements View.OnClickListener
 {
 
     ArrayList<Albaran> listaAlbaranes;
     ArrayList<Albaran> listaOriginal;
     Context contexto;
     OnDatosListener onDatosListener;
+
+    //variable listener para el metodo on click
+    private View.OnClickListener listener;
 
     public AdaptadorAlbaran(ArrayList<Albaran> listaAlbaranes, Context contexto, OnDatosListener onDatosListener) {
         this.listaAlbaranes = listaAlbaranes;
@@ -40,7 +43,20 @@ public class AdaptadorAlbaran extends RecyclerView.Adapter<AdaptadorAlbaran.MiCo
     public MiContenedor onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_albaran, parent, false);
+        view.setOnClickListener(this);
         return new MiContenedor(view);
+    }
+
+    //listener
+    public void setOnClickListener(View.OnClickListener listener){
+        this.listener = listener;
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(listener !=null){
+            listener.onClick(view);
+        }
     }
 
     public void onBindViewHolder(MiContenedor holder, int position)
@@ -111,15 +127,12 @@ public class AdaptadorAlbaran extends RecyclerView.Adapter<AdaptadorAlbaran.MiCo
         @Override
         public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo)
         {
-            //MenuItem itemEditar = contextMenu.add(Menu.NONE, 1, 1, "Editar");
             MenuItem itemBorrar = contextMenu.add(Menu.NONE, 2, 2, "Borrar");
-            //itemEditar.setOnMenuItemClickListener(this);
             itemBorrar.setOnMenuItemClickListener(this);
         }
 
         @Override
         public boolean onMenuItemClick(MenuItem menuItem) {
-            //Toast.makeText(contexto, "Borrado", Toast.LENGTH_SHORT).show();
             onDatosListener.onDatosBorrar(getAdapterPosition()); //le pasamos a la interfaz la posicion
             return true;
         }

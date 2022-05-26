@@ -31,6 +31,7 @@
     <string name="editText_nombre">Name</string>
     <string name="editText_precio">Price</string>
     <string name="btn_añadir">Create</string>
+    <string name="btn_editar">Edit</string>
 
     <string name="tv_añadir_albaran">Create delivery note</string>
     <string name="contador">Counter</string>

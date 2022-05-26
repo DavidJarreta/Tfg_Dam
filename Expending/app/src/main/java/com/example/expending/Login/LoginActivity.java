@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email = et_email_l.getText().toString();
+                /*String email = et_email_l.getText().toString();
                 String pass = et_pass_l.getText().toString();
 
                 SQLiteDatabase BDD = conexion.getReadableDatabase();
@@ -78,7 +78,11 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 } else {
                     Toast.makeText(LoginActivity.this, "Usuario no existente", Toast.LENGTH_SHORT).show();
-                }
+                }*/
+                Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                Bundle b = new Bundle();
+                i.putExtras(b);
+                startActivity(i);
             }
         });
     }

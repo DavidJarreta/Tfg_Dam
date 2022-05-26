@@ -41,12 +41,13 @@
             android:id="@+id/spinner_edit_maquina"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/spinner_register"/>
+            android:layout_weight="1"
+            android:background="@drawable/spinner_register"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <EditText
             android:id="@+id/et_edit_contador"
@@ -55,7 +56,6 @@
             android:layout_weight="0.80"
             android:ems="10"
             android:inputType="number"
-            android:text="@string/contador"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
@@ -73,7 +73,6 @@
             android:layout_weight="0.80"
             android:ems="10"
             android:inputType="none|numberDecimal"
-            android:text="@string/dinero"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
@@ -91,7 +90,6 @@
             android:layout_weight="0.80"
             android:ems="10"
             android:inputType="textWebEditText"
-            android:text="@string/fecha"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
@@ -109,7 +107,6 @@
             android:layout_weight="0.80"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@string/estado_maquina"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
@@ -124,13 +121,14 @@
             android:id="@+id/spinner_edit_ali"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="5dp"
+            android:layout_weight="1"
             android:background="@drawable/spinner_register"
-            android:minHeight="48dp"/>
+            android:minHeight="48dp"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <EditText
             android:id="@+id/et_edit_cantidad"
@@ -139,7 +137,6 @@
             android:layout_weight="0.80"
             android:ems="10"
             android:inputType="number"
-            android:text="@string/cantidad_alimento"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
@@ -160,7 +157,7 @@
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="5dp"
             android:backgroundTint="@color/teal_200"
-            android:text="@string/btn_añadir"
+            android:text="@string/btn_editar"
             app:cornerRadius="16dp"/>
     </LinearLayout>
 

@@ -31,6 +31,8 @@
     <string name="editText_nombre">Nombre</string>
     <string name="editText_precio">Precio</string>
     <string name="btn_añadir">Añadir</string>
+    <string name="btn_editar">Editar</string>
+
 
     <string name="tv_añadir_albaran">Añadir albaran</string>
     <string name="editAlbaran">Editar albaran</string>

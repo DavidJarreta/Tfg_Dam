@@ -29,7 +29,7 @@ import java.util.GregorianCalendar;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
-        DialogPersonalizado.Idioma
+        DialogPersonalizado.Idioma, iComunicaFragments
 {
     DrawerLayout drawerLayout; //todo lo que hay en el main.xml
     Toolbar toolbar;
@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     //varaibles para cargar el fragmento
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
+    EditAlbaranFragment editAlbaranFragment;
 
     //parametros para cambiar de idioma
     final int SPANISH = 1;
@@ -90,7 +91,47 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         drawerLayout.closeDrawer(GravityCompat.START);
-            if (this.tipo_usuario.equals("Empleado")){
+
+        switch (item.getItemId()){
+            case R.id.albaranes:
+                fragmentManager = getSupportFragmentManager();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.container, new MainFragment());
+                fragmentTransaction.commit();
+                break;
+            case R.id.alimentos:
+                fragmentManager = getSupportFragmentManager();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.container, new AlimentoFragment());
+                fragmentTransaction.commit();
+                break;
+            case R.id.crear_albaran:
+                fragmentManager = getSupportFragmentManager();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.container, new CrearAlbaranFragment());
+                fragmentTransaction.commit();
+                break;
+            case R.id.incidencias:
+                fragmentManager = getSupportFragmentManager();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.container, new IncidenciaFragment());
+                fragmentTransaction.commit();
+                break;
+            case R.id.ubicaciones:
+                Intent i = new Intent(MainActivity.this, UbicacionActivity.class);
+                startActivity(i);
+                break;
+            case R.id.configuracion:
+                FragmentManager fm = getSupportFragmentManager();
+                DialogPersonalizado dp = new DialogPersonalizado();
+                dp.show(fm, "tag");
+                break;
+            case R.id.cerrar_sesion:
+                finish();
+                Toast.makeText(this, "Sesión cerrada", Toast.LENGTH_SHORT).show();
+                break;
+        }
+            /*if (this.tipo_usuario.equals("Empleado")){
                 //EMPLEADO
                 switch (item.getItemId()) {
                     case R.id.crear_albaran:
@@ -165,7 +206,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         Toast.makeText(this, "Sesión cerrada", Toast.LENGTH_SHORT).show();
                         break;
                 }
-            }
+            }*/
         return false;
     }
 
@@ -211,6 +252,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.container, new CrearAlbaranFragment());
+        fragmentTransaction.commit();
+    }
+
+    @Override
+    public void enviarAlbaran(Albaran albaran) {
+        editAlbaranFragment = new EditAlbaranFragment();
+
+        //objeto bundle para pasar los datos
+        Bundle bundleEnvio = new Bundle();
+
+        //enviamos el objeto que esta llegando con serializable
+        bundleEnvio.putSerializable("objeto", albaran);
+        editAlbaranFragment.setArguments(bundleEnvio);
+
+        //abrimos el fragment
+        fragmentManager = getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.container, editAlbaranFragment );
+        fragmentTransaction.addToBackStack(null); //sirve para volver al recyclerview
         fragmentTransaction.commit();
     }
 }

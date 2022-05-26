@@ -22,6 +22,8 @@ import com.example.expending.AdaptadorAlbaran;
 import com.example.expending.AdminSQL;
 import com.example.expending.Albaran;
 import com.example.expending.R;
+import com.example.expending.iComunicaFragments;
+
 import java.util.ArrayList;
 
 public class MainFragment extends Fragment implements SearchView.OnQueryTextListener, AdaptadorAlbaran.OnDatosListener
@@ -32,6 +34,9 @@ public class MainFragment extends Fragment implements SearchView.OnQueryTextList
     RecyclerView recyclerView;
     AdaptadorAlbaran adapter;
     SearchView searchView;
+
+    Activity activity;
+    iComunicaFragments interfacesComunicaFragments;
 
     @Nullable
     @Override
@@ -52,7 +57,29 @@ public class MainFragment extends Fragment implements SearchView.OnQueryTextList
 
         //LISTENER PARA EL BUSCADOR
         searchView.setOnQueryTextListener(this);
+        adapter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //enviamos el objeto entero que pulsamos del recycler
+                interfacesComunicaFragments.enviarAlbaran(listaAlbaranes.get(recyclerView.getChildAdapterPosition(view)));
+            }
+        });
         return view;
+    }
+
+    //sirve para comunicar los datos del fragmentos de la lista con el otro fragmento
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if(context instanceof Activity){
+            this.activity = (Activity) context;
+            interfacesComunicaFragments = (iComunicaFragments) this.activity;
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
     }
 
     public void guardarDatos() {
@@ -63,6 +90,7 @@ public class MainFragment extends Fragment implements SearchView.OnQueryTextList
                 "u.id_usuario, u.nombre, m.id_maquina, m.nombre_empresa from albaranes a join usuarios u " +
                 "on a.id_usuario = u.id_usuario join maquinas m on a.id_maquina = m.id_maquina", null);
 
+        listaAlbaranes.clear();
         while(c.moveToNext()){
             albaran = new Albaran();
             albaran.setId(c.getInt(0));
@@ -94,7 +122,6 @@ public class MainFragment extends Fragment implements SearchView.OnQueryTextList
     @Override
     public void onDatosBorrar(int posicion) {
         int id = listaAlbaranes.get(posicion).getId();
-        //Toast.makeText(getContext(), id + "", Toast.LENGTH_SHORT).show();
 
         SQLiteDatabase db = conexion.getWritableDatabase();
         db.execSQL("delete from albaranes where id_albaran = " + id);
