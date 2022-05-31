@@ -20,7 +20,6 @@ public class LoginActivity extends AppCompatActivity {
 
     Button btn_login, btn_register;
     EditText et_email_l, et_pass_l;
-
     AdminSQL conexion;
 
     @Override
@@ -37,8 +36,6 @@ public class LoginActivity extends AppCompatActivity {
         //iniciamos conexion
         conexion = new AdminSQL(this, "expending", null, 5);
 
-
-
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*String email = et_email_l.getText().toString();
+                String email = et_email_l.getText().toString();
                 String pass = et_pass_l.getText().toString();
 
                 SQLiteDatabase BDD = conexion.getReadableDatabase();
@@ -78,11 +75,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 } else {
                     Toast.makeText(LoginActivity.this, "Usuario no existente", Toast.LENGTH_SHORT).show();
-                }*/
-                Intent i = new Intent(LoginActivity.this, MainActivity.class);
-                Bundle b = new Bundle();
-                i.putExtras(b);
-                startActivity(i);
+                }
             }
         });
     }

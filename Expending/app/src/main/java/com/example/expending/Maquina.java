@@ -52,6 +52,6 @@ public class Maquina implements Serializable
 
     @Override
     public String toString() {
-        return id + ", " + nombre_empresa;
+        return id + "-" + nombre_empresa;
     }
 }

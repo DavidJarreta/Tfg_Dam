@@ -103,32 +103,25 @@ public class EditAlbaranFragment extends Fragment
                 String alimento_e = spinner_alimento_edit.getSelectedItem().toString();
 
                 //parseamos el id del usuario a integer
-                String[] partsUsuario = usuario_e.split(",");
+                String[] partsUsuario = usuario_e.split("-");
                 String idU = partsUsuario[0];
                 Integer idUsuario = Integer.valueOf(idU);
 
                 //parseamos el id de la maquina a integer
-                String[] partsMaquina = maquina_e.split(",");
+                String[] partsMaquina = maquina_e.split("-");
                 String idM = partsMaquina[0];
                 Integer idMaquina = Integer.valueOf(idM);
 
-                //parseamos el id del alimento a integer
-                /*String[] partsAlimento = alimento_e.split(",");
-                String idA = partsAlimento[0];
-                Integer idAlimento = Integer.valueOf(idA);*/
-
-
                 String contador_e = et_contador_edit.getText().toString();
-                double dinero_e = Double.parseDouble(et_dinero_edit.getText().toString());
                 String fecha_e = et_fecha_edit.getText().toString();
                 String estado_e = et_estado_edit.getText().toString();
-                Integer cantidad_e =  Integer.valueOf(et_cantidad_edit.getText().toString());
-
                 SQLiteDatabase BaseDeDatos = conexion.getWritableDatabase();
                 ContentValues registro = new ContentValues();
 
-                if (!contador_e.isEmpty() && dinero_e != 0 && !fecha_e.isEmpty() && !estado_e.isEmpty() && cantidad_e != 0){
+                if (!contador_e.isEmpty() && !fecha_e.isEmpty() && !estado_e.isEmpty()){
                     if(fecha_e.contains("/")){
+                        double dinero_e = Double.parseDouble(et_dinero_edit.getText().toString());
+                        Integer cantidad_e =  Integer.valueOf(et_cantidad_edit.getText().toString());
                         registro.put("estado_albaran", estado_e);
                         registro.put("fecha", fecha_e);
                         registro.put("dinero_recaudado", dinero_e);
@@ -143,8 +136,6 @@ public class EditAlbaranFragment extends Fragment
                 }
             }
         });
-
-
         return  view;
     }
 

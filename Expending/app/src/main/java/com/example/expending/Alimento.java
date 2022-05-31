@@ -43,6 +43,6 @@ public class Alimento implements Serializable
 
     @Override
     public String toString() {
-        return id + ", " + nombre;
+        return id + "-" + nombre;
     }
 }

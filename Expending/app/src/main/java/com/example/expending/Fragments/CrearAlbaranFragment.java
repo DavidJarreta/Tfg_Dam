@@ -83,32 +83,34 @@ public class CrearAlbaranFragment extends Fragment
                 String alimento = spinner_alimento.getSelectedItem().toString();
 
                 //parseamos el id del usuario a integer
-                String[] partsUsuario = usuario.split(",");
+                String[] partsUsuario = usuario.split("-");
                 String idU = partsUsuario[0];
                 Integer idUsuario = Integer.valueOf(idU);
 
                 //parseamos el id de la maquina a integer
-                String[] partsMaquina = maquina.split(",");
+                String[] partsMaquina = maquina.split("-");
                 String idM = partsMaquina[0];
                 Integer idMaquina = Integer.valueOf(idM);
 
                 //parseamos el id del alimento a integer
-                String[] partsAlimento = alimento.split(",");
+                String[] partsAlimento = alimento.split("-");
                 String idA = partsAlimento[0];
                 Integer idAlimento = Integer.valueOf(idA);
 
                 String contador = et_contador.getText().toString();
-                double dinero = Double.parseDouble(et_dinero.getText().toString());
+
                 String fecha = et_fecha.getText().toString();
                 String estado = et_estado.getText().toString();
-                Integer cantidad =  Integer.valueOf(et_cantidad.getText().toString());
+
 
                 SQLiteDatabase BaseDeDatos = conexion.getWritableDatabase();
                 SQLiteDatabase BDD = conexion.getReadableDatabase();
                 ContentValues registro = new ContentValues();
 
-                if (!contador.isEmpty() && dinero != 0 && !fecha.isEmpty() && !estado.isEmpty() && cantidad != 0){
+                if (!contador.isEmpty() && !fecha.isEmpty() && !estado.isEmpty()){
                     if(fecha.contains("/")){
+                        double dinero = Double.parseDouble(et_dinero.getText().toString());
+                        Integer cantidad =  Integer.valueOf(et_cantidad.getText().toString());
                         //Insertamos en albaranes
                         registro.put("estado_albaran", estado);
                         registro.put("fecha", fecha);
