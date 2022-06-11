@@ -66,7 +66,7 @@ public class IncidenciaFragment extends Fragment
                 String descrip = et_descrip.getText().toString();
                 String fecha = et_fecha_inci.getText().toString();
 
-                String[] parts = maquina.split(",");
+                String[] parts = maquina.split("-");
                 String id = parts[0];
                 Integer idMaquina = Integer.valueOf(id);
 
